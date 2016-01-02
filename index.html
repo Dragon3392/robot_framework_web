@@ -8,6 +8,7 @@
 		<title>BIONIC</title>
 		<link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/index.css" rel="stylesheet">
+		<link href="css/loading.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -35,6 +36,17 @@
 			<div class="row">
 				<div class="col-sm-4 col-md-3 sidebar">
 					<div class="input-group" style="margin-bottom: 10px;">
+						<span class="input-group-btn">
+							<div class="btn-group">
+								<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+									Type <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu  dropdown-menu-left">
+									<li><a class="active" href="javascript:filter_type('Robot')">Robot</a></li>
+									<li><a href="javascript:filter_type('PyUnit')">PyUnit</a></li>
+								</ul>
+							</div>
+						</span>
 						<input type="text" class="form-control" placeholder="Search for..." />
 						<span class="input-group-btn">
 			        			<button class="btn btn-default" type="button">
@@ -79,11 +91,32 @@
 						</li>
 					</ul>-->
 					<ul class="nav nav-sidebar" id="app_ul">
-			          </ul>
+						<div id="loading-center-absolute">
+							<div class="object"></div>
+							<div class="object"></div>
+							<div class="object"></div>
+							<div class="object"></div>
+							<div class="object"></div>
+							<div class="object"></div>
+							<div class="object"></div>
+							<div class="object"></div>
+							<div class="object"></div>
+							<div class="object"></div>
+						</div>
+					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main">
+			<div class="row">
+				<div class="col-xs-12 col-md-6">
+					<span style="font-size: 23px;">Application1</span>
+				</div>
+  				<div class="col-xs-12 col-md-6" style="text-align: right;">
+  					<button type="button" class="btn btn-danger">Danger</button>
+  				</div>
+			</div>
+			<hr />
 			<ul class="nav nav-tabs">
 			  <li role="presentation" class="active"><a href="#">Cases</a></li>
 			  <li role="presentation"><a href="#">Reports</a></li>

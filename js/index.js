@@ -1,11 +1,15 @@
+var host = "172.16.134.44";
+var port = "8080";
+
 $(document).ready(function() {
 	var apps = project_list().projects;
+	$("#app_ul").text("");
 	for(var i=0;i<apps.length;i++) {
 		//alert(apps[i]);
 		if(i == 0) {
-			$("#app_ul").append("<li class='active'><a href='#'>"+apps[i]+"<span class='sr-only'></span></a></li>");
+			$("#app_ul").append("<li class='active'><a href='#'>"+apps[i].folderName+"<span class='sr-only'></span></a></li>");
 		}else {
-			$("#app_ul").append("<li><a href='#'>"+apps[i]+"</a></li>");
+			$("#app_ul").append("<li><a href='#'>"+apps[i].folderName+"</a></li>");
 		}
 	}
 });
@@ -23,7 +27,7 @@ function save() {
 	var appType = $("#app_type").val();
 	$.ajax({
 		type: 'POST',
-		url: "http://172.16.134.41:8080/api/createFolder",
+		url: "http://"+host+":"+port+"/api/createProject",
 		contentType: "application/json",
 		data: JSON.stringify({
 			folderName: appName,
@@ -40,16 +44,16 @@ function save() {
 }
 
 function project_list(type) {
-	var url = "http://172.16.134.41:8080/api/listProjectAll";
+	var _url = "http://"+host+":"+port+"/api/listProjectAll";
 	if(type) {
-		url = "http://172.16.134.41:8080/api/listProject/"+type;
+		_url = "http://"+host+":"+port+"/api/listProject/"+type;
 	}
-	alert(url);
+	//alert(_url);
 	var result = "";
 	$.ajax({
 		type: 'GET',
 		async:false,
-		url: "http://172.16.134.41:8080/api/listProject/"+type,
+		url: _url,
 		success: function(msg) {
 			console.log(msg);
 			result = msg;
