@@ -63,35 +63,11 @@
 							</div>
 						</span>
 					</div>
-					<!--
-                    <ul class="nav nav-tabs">
-						<li role="presentation" class="active"><a href="#">Home</a></li>
-	  					<li role="presentation"><a href="#">Profile</a></li>
-					</ul>-->
-					<!--<ul class="nav main-nav nav-tabs nav-stacked">
-						<li>
-							<a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">
-                        APP1<span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
-                        </a>
-							<ul id="systemSetting" class="nav nav-list secondmenu collapse" style="height: 0px;">
-								<li><a href="#">CASE</a></li>
-								<li><a href="#">REPORTS</a></li>
-							</ul>
-						</li>
-					</ul>
-					<ul class="nav main-nav nav-tabs nav-stacked">
-						<li>
-							<a href="#systemSetting1" class="nav-header collapsed" data-toggle="collapse">
-                        APP2<span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
-                        </a>
-							<ul id="systemSetting1" class="nav nav-list secondmenu collapse" style="height: 0px;">
-								<li><a href="#">CASE</a></li>
-								<li><a href="#">REPORTS</a></li>
-							</ul>
-						</li>
-					</ul>-->
 					<ul class="nav nav-sidebar" id="app_ul">
-						<div id="loading-center-absolute">
+						<!--<li id="11_app_li">
+							<a href='javascript:load_cases(11,"tickit")'>tickit</a>
+						</li>-->
+                        	<div id="loading-center-absolute" style="margin-top: 25px;margin-left: 75px;">
 							<div class="object"></div>
 							<div class="object"></div>
 							<div class="object"></div>
@@ -107,86 +83,38 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main">
+		<div id="right_frame_div" style="display: none;" class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main">
 			<div class="row">
 				<div class="col-xs-12 col-md-6">
-					<span style="font-size: 23px;">Application1</span>
+					<span style="font-size: 23px;" id="project_name_view">${app_name}</span>
+					<input type="hidden" name="app_id" id="app_id" value="" />
 				</div>
   				<div class="col-xs-12 col-md-6" style="text-align: right;">
-  					<button type="button" class="btn btn-danger">Danger</button>
+  					<button type="button" class="btn btn-danger" onclick="delete()">DELETE</button>
   				</div>
 			</div>
 			<hr />
 			<ul class="nav nav-tabs">
-			  <li role="presentation" class="active"><a href="#">Cases</a></li>
-			  <li role="presentation"><a href="#">Reports</a></li>
+			  <li role="presentation" id="cases_li"><a href="javascript:load_cases()">Cases</a></li>
+			  <li role="presentation" id="reports_li"><a href="javascript:load_reports()">Reports</a></li>
 			</ul>
-			<div class="table-responsive">
-				<table class="table" style="margin-bottom: 0px;">
-					<tr>
-						<td width="50%" class="td_my">
-							<label style="font-size: 30px"></label>
-						</td>
-						<td width="50%" class="td_my">
-							<div class="input-group" style="margin-bottom: 10px;">
-								<input type="text" class="form-control" placeholder="Search for...">
-								<span class="input-group-btn">
-					        <button class="btn btn-default" type="button">
-					        		<span class="glyphicon glyphicon-search"></span>
-					        </button>
-					        <button class="btn btn-success" type="submit">▶</button>
-					      </span>
-							</div>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="table-responsive">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th width="10%">
-								<input type="checkbox" name="asdas" />
-							</th>
-							<th>名称</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>
-								<input type="checkbox" name="asdas" />
-							</td>
-							<td>case name</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="checkbox" name="asdas" />
-							</td>
-							<td>amet</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="checkbox" name="asdas" />
-							</td>
-							<td>per</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="checkbox" name="asdas" />
-							</td>
-							<td>sodales</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="checkbox" name="asdas" />
-							</td>
-							<td>sodales</td>
-						</tr>
-					</tbody>
-				</table>
+			<div id="iframe_div" style="display: none;">
+				<ul class="nav nav-sidebar" id="app_ul">
+					<div id="loading-center-absolute" style="margin-top: 25px;margin-left: 175px;">
+						<div class="object"></div>
+						<div class="object"></div>
+						<div class="object"></div>
+						<div class="object"></div>
+						<div class="object"></div>
+						<div class="object"></div>
+						<div class="object"></div>
+						<div class="object"></div>
+						<div class="object"></div>
+						<div class="object"></div>
+					</div>
+				</ul>
 			</div>
 		</div>
-
 		<!-- Modal -->
 		<div class="modal fade" id="add_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
@@ -197,6 +125,7 @@
 					</div>
 					<div class="modal-body">
 						<input type="text" class="form-control" name="appName" id="appName" placeholder="add app name...">
+						<input type="text" class="form-control" name="gitAddress" id="gitAddress" placeholder="git address...">
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -210,6 +139,9 @@
 		<script src="js/jquery-1.11.3.min.js"></script>
 		<script src="bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="js/index.js"></script>
+		<script src="js/highcharts.js"></script>
+		<script src="js/highcharts-3d.js"></script>
+		<script src="js/charts.js"></script>
 	</body>
 
 </html>

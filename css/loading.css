@@ -1,12 +1,7 @@
 
 #loading-center-absolute {
-	position: absolute;
-	left: 50%;
-	top: 50%;
 	height: 50px;
 	width: 150px;
-	margin-top: -25px;
-	margin-left: -75px;
 
 }
 .object{
