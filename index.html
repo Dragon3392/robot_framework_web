@@ -38,9 +38,9 @@
 					<div class="input-group" style="margin-bottom: 10px;">
 						<span class="input-group-btn">
 							<div class="btn-group">
-								<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+								<!--<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
 									Type <span class="caret"></span>
-								</button>
+								</button>-->
 								<ul class="dropdown-menu  dropdown-menu-left">
 									<li><a class="active" href="javascript:filter_type('Robot')">Robot</a></li>
 									<li><a href="javascript:filter_type('PyUnit')">PyUnit</a></li>
@@ -66,7 +66,7 @@
 					<ul class="nav nav-sidebar" id="app_ul">
 						<!--<li id="11_app_li">
 							<a href='javascript:load_cases(11,"tickit")'>tickit</a>
-						</li>-->
+						</li>-->	
                         	<div id="loading-center-absolute" style="margin-top: 25px;margin-left: 75px;">
 							<div class="object"></div>
 							<div class="object"></div>
@@ -90,29 +90,16 @@
 					<input type="hidden" name="app_id" id="app_id" value="" />
 				</div>
   				<div class="col-xs-12 col-md-6" style="text-align: right;">
-  					<button type="button" class="btn btn-danger" onclick="delete()">DELETE</button>
+  					<button type="button" class="btn btn-danger" onclick="delete_app()">DELETE</button>
   				</div>
 			</div>
-			<hr />
+			<hr style="margin-top: 10px;margin-bottom: 10px;"/>
 			<ul class="nav nav-tabs">
 			  <li role="presentation" id="cases_li"><a href="javascript:load_cases()">Cases</a></li>
 			  <li role="presentation" id="reports_li"><a href="javascript:load_reports()">Reports</a></li>
 			</ul>
-			<div id="iframe_div" style="display: none;">
-				<ul class="nav nav-sidebar" id="app_ul">
-					<div id="loading-center-absolute" style="margin-top: 25px;margin-left: 175px;">
-						<div class="object"></div>
-						<div class="object"></div>
-						<div class="object"></div>
-						<div class="object"></div>
-						<div class="object"></div>
-						<div class="object"></div>
-						<div class="object"></div>
-						<div class="object"></div>
-						<div class="object"></div>
-						<div class="object"></div>
-					</div>
-				</ul>
+			<div class="panel panel-default" id="iframe_div" style="display: none;border-top: 0px;border-radius: 0px;">
+				
 			</div>
 		</div>
 		<!-- Modal -->
@@ -125,6 +112,7 @@
 					</div>
 					<div class="modal-body">
 						<input type="text" class="form-control" name="appName" id="appName" placeholder="add app name...">
+						<br />
 						<input type="text" class="form-control" name="gitAddress" id="gitAddress" placeholder="git address...">
 					</div>
 					<div class="modal-footer">
@@ -142,6 +130,7 @@
 		<script src="js/highcharts.js"></script>
 		<script src="js/highcharts-3d.js"></script>
 		<script src="js/charts.js"></script>
+		<script src="js/case.js"></script>
+		<script src="template/template.js"></script>
 	</body>
-
 </html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>测试js模板</title>
+		<link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="js/template.js"></script>
+	</head>
+	<body>
+		<div id="content"></div>
+	</body>
+</html>
+<script id="test" type="text/html">
+	{{each cases as suit i}}
+	<div class="panel panel-primary" style="margin-left: 10px;margin-right: 10px;margin-bottom: 5px">
+		<div class="panel-heading container-fluid">
+			<div class="row">
+			  <div class="col-md-8">
+			  	<h4 class="panel-title">
+			  		<input type="checkbox" name="{{i}}_suit_as_chk" id="{{i}}_suit_as_chk" style="margin-right: 10px;" />
+			  		{{suit.suitName}} (一共:{{suit.caseName.length}}个,选中:0个)
+			  	</h4>
+			  </div>
+			  <div class="col-md-4">
+			  	<h4 class="panel-title" style="text-align:right;">
+					<a class="my_a text-right" data-toggle="collapse" data-parent="#accordion" href="#{{i}}_suit_div" aria-expanded="true" aria-controls="collapseOne">
+						<span id="collapseOneIcon" class="glyphicon glyphicon-minus"></span>
+					</a>
+				</h4>
+			  </div>
+			</div>
+		</div>
+		<div id="{{i}}_suit_div" class="panel-collapse collapse in">
+			<div class="panel-body" style="padding: 0px;">
+				<table class="table table-striped" style="margin-bottom: 0px;">
+					{{each suit.caseName as casName j}}
+					<tr>
+						<td width="10%">
+							<input type="checkbox" name="{{i}}_{{j}}_case_chk" id="{{i}}_{{j}}_case_chk" />
+						</td>
+						<td>{{casName}}</td>
+					</tr>
+					{{/each}}
+				</table>
+			</div>
+		</div>
+	</div>
+	{{/each}}
+</script>
+<script type="text/javascript">
+	var data = {cases:[{
+    		suitName: 'suiteName A',
+    		caseName: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+		},
+		{
+    		suitName: 'suiteName B',
+    		caseName: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+		}]};
+	var html = template('test', data);
+	document.getElementById('content').innerHTML = html;
+	
+	
+</script>
